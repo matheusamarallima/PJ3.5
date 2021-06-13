@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+
+    <link rel="stylesheet" href="/css/customstyle.css">
+
+
+
+</head>
+<body>
+<div class="page">
+
+
+    <div class="grid-container">
+
+        <div class="sidemenu">
+
+            <a th:href="@{/home}">Home</a><br><hr>
+            <a th:href="@{/coursesearch}">Course Search</a><br><hr>
+
+                <a th:href="@{studentlist}">Student list</a><br><hr>
+
+            <a th:href="@{/login}">Logout</a><br>
+        </div>
+
+        </div>
+            <div class="main">
+                <h1>Course Search</h1>
+                <hr>
+                <form th:action="@{/coursesearch}" th:object="${searchForm}" method="GET">
+                    <div class="register">
+
+                        <label for="department">Department:</label>
+                        <select name="department" th:field="*{department}" id="department">
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information and Technology">Information and Technology</option>
+                        </select>
+                        <br>
+                        <label for="semester">Semester:</label>
+                        <select name="semester"  th:field="*{semester}" id="semester">
+                            <option value="Semester-01">Semester-01</option>
+                            <option value="Semester-02">Semester-02</option>
+                            <option value="Semester-03">Semester-03</option>
+                        </select>
+                        <br>
+                    </div>
+                    <button type="Search" id="search" class="btn btn-info col-2">Search</button>
+                </form>
+                <hr>
+            <h1></h1>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+
+                </tr>
+                </thead>
+            <tbody>
+            <tr th:each="classes : ${classesList}">
+                <td th:text="${classes.courseId}"></td>
+                <td th:text="${classes.courseName}"></td>
+                <td>
+                </td>
+            </tr>
+            </tbody>
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </form>
+</body>
+</html>

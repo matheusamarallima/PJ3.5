@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/customstyle.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script th:src="@{/javascript/jquery.js}"></script>
+    <script th:src="@{/javascript/jqueryfile.js}"></script>
+
+
+</head>
+<body>
+<div class="page">
+
+    <div class="grid-container">
+
+        <div class="sidemenu">
+
+            <a th:href="@{/home}">Home</a><br><hr>
+            <a th:href="@{/coursesearch}">Course Search</a><br><hr>
+
+
+            <sec:authorize access=hasRole('role_ADMIN')>
+                <a th:href="@{studentlist}">Student list</a><br><hr>
+            </sec:authorize>
+
+            <a th:href="@{/login}">Logout</a><br>
+            <a id="logOutLink" class="logOut" >Log Out</a><br/>
+
+
+        </div>
+        <div class="main">
+            <h1>Welcome to College Management Services</h1>
+            <hr>
+            <p>
+                The college management services provides a platform for both the faculty/admin and students to get in touch with the offered services. A student can register in the platform and then search or view courses offered in different branches and semesters. An admin can view courses, and manage registered students, ie.
+                can delete any registered student from the portal.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+</form>
+</body>
+</html>

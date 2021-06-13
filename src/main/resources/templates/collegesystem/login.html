@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+
+
+    <link rel="stylesheet" href="/css/customstyle.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+<form th:action="@{/login}" method="POST">
+
+    <div class="container">
+        <label for="userId">Login:</label>
+        <input type="text" name="userId" id="userId" class="form-control mb-4 col-4">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="form-control mb-4 col-4">
+        <button id="login" class="btn btn-primary btn-sm mb-3">Login</button>
+    </div>
+
+    <div th:if="${param.error}" id="errors">Invalid Credentials</div>
+
+    <div class="container">
+<!--        <button type="button" class="cancelbtn">Cancel</button>-->
+        <a th:href="@{/forgotpassword}">Forgot your password?</a>
+
+        <a th:href="@{/register}">Register</a>
+
+    </div>
+
+
+
+</form>
+</body>
+</html>
