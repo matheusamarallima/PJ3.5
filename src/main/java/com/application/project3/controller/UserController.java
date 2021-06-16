@@ -6,23 +6,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.application.project3.repository.UserRepository;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
 
     private final UserRepository userRepo;
 
-    public UserController(UserRepository userRepo){
+    public UserController(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
 
-
     @GetMapping("/login")
-    public String login(){
+    public String login(Model model, @RequestParam(name = "success", required = false) int success) {
+        if (success == 1) {
+            model.addAttribute("success", "User successfully registered. Login to continue ");
+
+        }
         return "collegesystem/login";
     }
 
 
-
 }
+
+

@@ -36,9 +36,6 @@ public class ForgotPasswordController {
         userMain1.setPassword(securityConfig.encoder().encode(userMain1.getPassword()));
         userRepository.save(userMain1);
 
-
-
-
         return "redirect:/forgotpassword";
     }
 

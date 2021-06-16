@@ -20,4 +20,6 @@ public interface UserRepository extends CrudRepository<UserMain, String> {
 
     List<UserMain> findAllByRole(String role);
 
+    UserMain existsByUserId(String userId);
+
 }

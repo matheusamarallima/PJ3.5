@@ -64,7 +64,7 @@ public class RegisterForm {
     }
 
     public void setDepartment(String department) {
-        department = department;
+        this.department = department;
     }
 
     public String getSemester() {

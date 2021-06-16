@@ -25,14 +25,15 @@ public class RegisterController {
         this.userRepo = userRepo;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/registration")
     public String register(Model model){
         model.addAttribute("registerForm", new RegisterForm());
-        return "/collegesystem/register";
+        return "/collegesystem/registration";
     }
 
-    @PostMapping("/register")
-    public String saveStudent(RegisterForm registerForm, UserMain userMain){
+    @PostMapping("/registration")
+    public String saveStudent(Model model, RegisterForm registerForm, UserMain userMain){
+
         UserMain userMain1 = new UserMain();
         userMain1.setUserId(registerForm.getUserId());
         userMain1.setPassword(securityConfig.encoder().encode(registerForm.getPassword()));
@@ -47,7 +48,7 @@ public class RegisterController {
 
         userMain1 = userRepo.save(userMain1);
 
-        return "redirect:/login";
+        return "redirect:/login?success=1";
     }
 
 

@@ -1,0 +1,25 @@
+  <link rel="text/javascript" href="/javascript/jquery.js">
+    <link rel="text/javascript" href="/javascript/jquery.validate.min.js">
+    <link rel="text/javascript" href="/javascript/additional-methods.min.js">
+    <link rel="text/javascript" href="/javascript/minejquery.js">
+
+    <script type="text/javascript" src="/javascript/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="@{/javascript/additional-methods.min.js"></script>
+    <script type="text/javascript" src="@{/javascript/minejquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+             $("registerForm").validate({
+                 rules:{
+                    userId: {
+                     maxlength: 5,
+                     minlength:2
+                }
+             }
+        })
+        function teste(){
+            console.log("asas")
+        }
+
+    }</script>

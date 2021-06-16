@@ -12,28 +12,26 @@
     <script th:src="@{/javascript/jqueryfile.js}"></script>
 
 
+
 </head>
 <body>
 <div class="page">
 
     <div class="grid-container">
 
+
         <div class="sidemenu">
 
             <a th:href="@{/home}">Home</a><br><hr>
             <a th:href="@{/coursesearch}">Course Search</a><br><hr>
 
-
-            <sec:authorize access=hasRole('role_ADMIN')>
-                <a th:href="@{studentlist}">Student list</a><br><hr>
-            </sec:authorize>
+            <a sec:authorize =hasRole('ADMIN')> th:href="@{studentlist}">Student list</a><br><hr>
 
             <a th:href="@{/login}">Logout</a><br>
-            <a id="logOutLink" class="logOut" >Log Out</a><br/>
 
 
         </div>
-        <div class="main">
+        <div class="main" id="content">
             <h1>Welcome to College Management Services</h1>
             <hr>
             <p>

@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-
-
+    
     <link rel="stylesheet" href="/css/customstyle.css">
-
 
 
 </head>
@@ -20,9 +18,10 @@
         <div class="sidemenu">
 
             <a th:href="@{/home}">Home</a><br><hr>
+
             <a th:href="@{/coursesearch}">Course Search</a><br><hr>
 
-                <a th:href="@{studentlist}">Student list</a><br><hr>
+            <a sec:authorize=hasRole('ADMIN')> th:href="@{studentlist}">Student list</a><br><hr>
 
             <a th:href="@{/login}">Logout</a><br>
         </div>
@@ -35,13 +34,13 @@
                     <div class="register">
 
                         <label for="department">Department:</label>
-                        <select name="department" th:field="*{department}" id="department">
+                        <select name="department" th:field="*{department}" id="department" required>
                             <option value="Computer Science">Computer Science</option>
                             <option value="Information and Technology">Information and Technology</option>
                         </select>
                         <br>
                         <label for="semester">Semester:</label>
-                        <select name="semester"  th:field="*{semester}" id="semester">
+                        <select name="semester"  th:field="*{semester}" id="semester" required>
                             <option value="Semester-01">Semester-01</option>
                             <option value="Semester-02">Semester-02</option>
                             <option value="Semester-03">Semester-03</option>
@@ -57,25 +56,19 @@
                 <tr>
                     <th>Course Id</th>
                     <th>Course Name</th>
-
                 </tr>
                 </thead>
             <tbody>
-            <tr th:each="classes : ${classesList}">
-                <td th:text="${classes.courseId}"></td>
-                <td th:text="${classes.courseName}"></td>
-                <td>
+            <tr th:each="classes, loop : ${classesList}">
+                <td th:id="courseId + (${loop.index} + 1)" th:text="${classes.courseId}"></td>
+                <td th:id="courseName + (${loop.index} + 1)" th:text="${classes.courseName}"></td>
                 </td>
             </tr>
             </tbody>
+            </table>
         </div>
 
     </div>
-
-    </div>
-
-    </div>
-
     </form>
 </body>
 </html>

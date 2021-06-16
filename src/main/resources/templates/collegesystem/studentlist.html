@@ -11,7 +11,6 @@
 <body>
 
 <div class="container my-2">
-    <a th:href="@{register}" class="btn btn-primary btn-sm mb-3">Add Student</a>
     <h1>Students</h1>
 
     <div class="sidemenu">
@@ -19,9 +18,7 @@
         <a th:href="@{/home}">Home</a><br><hr>
         <a th:href="@{/coursesearch}">Course Search</a><br><hr>
 
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <a th:href="@{studentlist}">Student list</a><br><hr>
-        </sec:authorize>
+        <a sec:authorize =hasRole('ADMIN')> th:href="@{studentlist}">Student list</a><br><hr>
 
         <a th:href="@{/login}">Logout</a><br>
     </div>
@@ -37,10 +34,10 @@
         <tbody>
         </tbody>
 
-        <tr th:each="userMain : ${studentsList}">
-            <td th:text="${userMain.name}"></td>
-            <td th:text="${userMain.petName}"></td>
-            <td th:text="${userMain.age}"></td>
+        <tr th:each="userMain, loop : ${studentsList}">
+            <td th:id="userName+(${loop.index}) + 1)" th:text="${userMain.name}"></td>
+            <td th:id="department+(${loop.index}) + 1)"th:text="${userMain.department}"></td>
+            <td th:id="semester+(${loop.index}) + 1)"th:text="${userMain.semester}"></td>
             <td> <a th:href="@{delete/{id}(id=${userMain.id})}"><input id="delete" type="button" value="Delete" class="btn btn-primary btn-sm mb-3"></a></td>
             <td>
             </td>

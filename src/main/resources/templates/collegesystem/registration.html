@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/customstyle.css">
     <link rel="stylesheet" href="/css/style.css">
 
+    <script defer src="/javascript/script.js"></script>
+
     <style>
         .register > input {
                display : flex;
@@ -21,25 +23,24 @@
     <h1>Registration</h1>
     <hr>
 
-    <form th:action="@{/register}" th:object="${registerForm}" method="POST">
+    <form id="registerForm" th:action="@{/registration}" th:object="${registerForm}" method="POST">
 
         <div class="register">
-
+                                              pattern="[A-Za-z\d\.]{6,10}"
         <label for="userId">User Id:</label>
-        <input type="text"  th:field="*{userId}" name="userId" id="userId" class="form-control mb-4 col-4" float-right>
-
-        <label for="name">Name:</label>
-        <input type="text" th:field="*{name}" name="name" id="name" class="form-control mb-4 col-4">
-
-        <label for="age">Age:</label>
-        <input type="text" th:field="*{age}" name="age" id="age" class="form-control mb-4 col-4">
-
+        <input type="text"  th:field="*{userId}"  required name="userId" id="userId" class="form-control mb-4 col-4" float-right>
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
         <label for="password">Password:</label>
-        <input type="text" th:field="*{password}" name="password" id="password" class="form-control mb-4 col-4">
-
+        <input type="text" th:field="*{password}" name="password"  id="password" class="form-control mb-4 col-4">
+            pattern="[A-Za-z\d\.]{3,20}"
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" name="name"  id="name" class="form-control mb-4 col-4">
+            pattern="[A-Za-z]*{3,10}"
         <label for="petName">Pet name:</label>
         <input type="text" th:field="*{petName}" name="petName" id="petName" class="form-control mb-4 col-4">
-
+            pattern="[1-9][0-9]{0,2}"
+        <label for="age">Age:</label>
+        <input type="text" th:field="*{age}" name="age"  id="age" class="form-control mb-4 col-4">
 
         <label for="gender">Gender:</label>
         <select name="gender" th:field="*{gender}" id="gender">
@@ -64,9 +65,12 @@
         <br>
 
         </div>
-        <button type="Register" id="register" class="btn btn-info col-2">Save</button>
+        <button type="Register" id="register" class="btn btn-info col-2">Register</button>
+
     </form>
     <hr>
+
+    <div id="error"></div>
 
 </div>
 </body>
