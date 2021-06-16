@@ -17,6 +17,7 @@
         }
     </style>
 
+
 </head>
 <body>
 <div class="container my-2">
@@ -28,7 +29,8 @@
         <div class="register">
                                               pattern="[A-Za-z\d\.]{6,10}"
         <label for="userId">User Id:</label>
-        <input type="text"  th:field="*{userId}"  required name="userId" id="userId" class="form-control mb-4 col-4" float-right>
+        <input type="text"  th:field="*{userId}" required name="userId" id="userId" class="form-control mb-4 col-4" float-right>
+            <p class="extenso"><strong>FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFUUUUUUUUUUUUU</strong> </p>
             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
         <label for="password">Password:</label>
         <input type="text" th:field="*{password}" name="password"  id="password" class="form-control mb-4 col-4">
@@ -65,7 +67,7 @@
         <br>
 
         </div>
-        <button type="Register" id="register" class="btn btn-info col-2">Register</button>
+        <button onclick="testeType(document.getElementById('userId'), document.getElementById('password'), document.getElementById('name'), document.getElementById('petName'), document.getElementById('age'))" type="Register" id="register" class="btn btn-info col-2">Register</button>
 
     </form>
     <hr>
