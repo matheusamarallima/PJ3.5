@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-                    .antMatchers("/login", "register")
-                        .permitAll()
+                    .antMatchers("/login", "/register", "/forgotpassword", "/javascript/**", "/css/**")
+                        .permitAll().antMatchers("/**").hasAnyRole("ADMIN", "STUDENT")
 //                    .antMatchers("/student/**")
 //                        .hasRole("STUDENT")
                 .and()

@@ -15,6 +15,8 @@ public interface UserRepository extends CrudRepository<UserMain, String> {
 
     UserMain findByUserId(String userId);
 
+    UserMain findByPetName(String petName);
+
     UserMain findByUserIdAndPetName(String userId, String petName);
 
 

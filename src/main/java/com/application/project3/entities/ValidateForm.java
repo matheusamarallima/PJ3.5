@@ -1,6 +1,6 @@
 package com.application.project3.entities;
 
-public class ForgotPasswordForm {
+public class ValidateForm {
 
     private String userId;
     private String password;

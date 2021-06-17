@@ -20,10 +20,17 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String login(Model model, @RequestParam(name = "success", required = false) int success) {
+    public String login(Model model, @RequestParam(name = "success", required = false) Integer success) {
+        if(success == null){
+            return "collegesystem/login";
+        }
+
         if (success == 1) {
             model.addAttribute("success", "User successfully registered. Login to continue ");
-
+            return "collegesystem/login";
+        }if(success == 2){
+            model.addAttribute("success", "Password successfully changed");
+            return "collegesystem/login";
         }
         return "collegesystem/login";
     }

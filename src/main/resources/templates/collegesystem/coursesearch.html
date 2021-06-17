@@ -21,7 +21,7 @@
 
             <a th:href="@{/coursesearch}">Course Search</a><br><hr>
 
-            <a sec:authorize=hasRole('ADMIN')> th:href="@{studentlist}">Student list</a><br><hr>
+            <a sec:authorize=hasRole('ADMIN') th:href="@{studentlist}">Student list</a><br><hr>
 
             <a th:href="@{/login}">Logout</a><br>
         </div>

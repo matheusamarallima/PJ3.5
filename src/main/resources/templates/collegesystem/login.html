@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form th:action="@{/login}" method="POST">
+<form th:action="@{/login}" id="loginForm" method="POST">
 
     <div class="container">
         <label for="userId">Login:</label>
@@ -22,15 +22,16 @@
         <button id="login" class="btn btn-primary btn-sm mb-3">Login</button>
     </div>
 
-    <div th:if="${param.error}" id="errors">Invalid Credentials</div>
+    <div th:if="${param.error}" id="error">Invalid Credentials</div>
 
     <div class="container">
-<!--        <button type="button" class="cancelbtn">Cancel</button>-->
-        <a th:href="@{/forgotpassword}">Forgot your password?</a>
 
-        <a th:href="@{/registration}">Register</a>
+        <a th:href="@{/forgotpassword}">Forgot password</a>
 
-        <div id=”message”  span th:text="${success}"></div>
+        <a th:href="@{/register}">Register</a>
+
+        <div id="message"  th:text="${success}"></div>
+
     </div>
 
 

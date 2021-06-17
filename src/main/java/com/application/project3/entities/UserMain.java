@@ -169,19 +169,4 @@ public class UserMain implements UserDetails {
         return Objects.hash(id, userId, password, role, name, age, petName, gender, department, semester);
     }
 
-    @Override
-    public String toString() {
-        return "UserMain{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", petName='" + petName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", department='" + department + '\'' +
-                ", semester='" + semester + '\'' +
-                '}';
-    }
 }

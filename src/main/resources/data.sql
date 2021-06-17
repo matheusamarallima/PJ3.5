@@ -1,5 +1,5 @@
 insert into user_main (id, user_id, password, role)
-values(1, 'admin01', '$2a$10$KP5I5sK84o5SQEsz0mULAe7/epYqgndxtEDEGBwvqbHiTw2jt8hT6', 'ROLE_ADMIN');
+values(1, 'admin01', '$2a$10$EFFoff7Z23W44r2vFACVQOgP4KulVZU3wQEe3Zexm2tV13DhgqTPW', 'ROLE_ADMIN');
 
 
 

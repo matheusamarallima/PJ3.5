@@ -18,7 +18,7 @@
         <a th:href="@{/home}">Home</a><br><hr>
         <a th:href="@{/coursesearch}">Course Search</a><br><hr>
 
-        <a sec:authorize =hasRole('ADMIN')> th:href="@{studentlist}">Student list</a><br><hr>
+        <a sec:authorize =hasRole('ADMIN') th:href="@{studentlist}">Student list</a><br><hr>
 
         <a th:href="@{/login}">Logout</a><br>
     </div>
@@ -28,16 +28,16 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Pet Name</th>
-                <th>Age</th>
+                <th>Department</th>
+                <th>Semester</th>
             </tr>
         <tbody>
         </tbody>
 
         <tr th:each="userMain, loop : ${studentsList}">
-            <td th:id="userName+(${loop.index}) + 1)" th:text="${userMain.name}"></td>
-            <td th:id="department+(${loop.index}) + 1)"th:text="${userMain.department}"></td>
-            <td th:id="semester+(${loop.index}) + 1)"th:text="${userMain.semester}"></td>
+            <td th:id="userName+(${loop.index} + 1)" th:text="${userMain.name}"></td>
+            <td th:id="department+(${loop.index}  + 1)" th:text="${userMain.department}"></td>
+            <td th:id="semester+(${loop.index} + 1)" th:text="${userMain.semester}"></td>
             <td> <a th:href="@{delete/{id}(id=${userMain.id})}"><input id="delete" type="button" value="Delete" class="btn btn-primary btn-sm mb-3"></a></td>
             <td>
             </td>
