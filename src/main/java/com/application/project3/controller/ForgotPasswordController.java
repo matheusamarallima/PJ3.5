@@ -81,7 +81,6 @@ public class ForgotPasswordController {
                         @SessionAttribute("validateForm") ValidateForm validateForm)
     {
 
-
         try {
 
             if(password!= null && password.equals(confirmPassword)){

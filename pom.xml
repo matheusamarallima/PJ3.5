@@ -8,6 +8,7 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from com.application.project3.repository -->
 	</parent>
+	<packaging>war</packaging>
 	<groupId>com.application</groupId>
 	<artifactId>project3.3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
