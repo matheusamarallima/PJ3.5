@@ -25,13 +25,13 @@ public class RegisterController {
         this.userRepo = userRepo;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/registration")
     public String register(Model model){
         model.addAttribute("registerForm", new RegisterForm());
         return "/collegesystem/register";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registration")
     public String saveStudent(Model model, RegisterForm registerForm, UserMain userMain){
 
 //        if(registerForm.getUserId().equals("") || registerForm.getName().equals("") || registerForm.getPetName().equals("")
