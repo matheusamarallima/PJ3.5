@@ -60,8 +60,8 @@
                 </thead>
             <tbody>
             <tr th:each="classes, loop : ${classesList}">
-                <td th:id="courseId + (${loop.index} + 1)" th:text="${classes.courseId}"></td>
-                <td th:id="courseName + (${loop.index} + 1)" th:text="${classes.courseName}"></td>
+                <td th:id="courseId+(${loop.index}+1)" th:text="${classes.courseId}"></td>
+                <td th:id="courseName+(${loop.index}+1)" th:text="${classes.courseName}"></td>
                 </td>
             </tr>
             </tbody>
