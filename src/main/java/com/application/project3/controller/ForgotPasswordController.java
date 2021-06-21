@@ -31,10 +31,10 @@ public class ForgotPasswordController {
     @GetMapping("/forgotpassword")
     public String forgotPassword(Model model, @SessionAttribute(value = "validateForm", required = false) ValidateForm validateForm) {
 
-            if(validateForm==null){
-                validateForm= new ValidateForm();
+        if (validateForm == null) {
+            validateForm = new ValidateForm();
 
-            }
+        }
 
         model.addAttribute("validateForm", validateForm);
 
@@ -43,8 +43,8 @@ public class ForgotPasswordController {
 
     @PostMapping("/forgotpassword")
     public String validateUser(Model model, RedirectAttributes redirectAttributes, ValidateForm validateForm,
-            @RequestParam(value = "password", required = false) String password,
-            @RequestParam(value = "confirmPassword", required = false) String confirmPassword){
+                               @RequestParam(value = "password", required = false) String password,
+                               @RequestParam(value = "confirmPassword", required = false) String confirmPassword) {
 
 
         try {
@@ -54,20 +54,18 @@ public class ForgotPasswordController {
             if (userMain1 != null && userMain1.getPetName().equals(validateForm.getPetName())) {
                 return "redirect:/forgotpassword?validate=1";
             }
-            if(password!= null && password.equals(confirmPassword)){
+            if (userMain1 != null && password != null && password.equals(confirmPassword)) {
 
                 userMain1.setPassword(securityConfig.encoder().encode(password));
                 userRepository.save(userMain1);
                 return "redirect:/login?success=2";
 
-            }else {
-                model.addAttribute("error", "Password must be the same");
+            }else{
+                model.addAttribute("error", "User Id/Security answer is invalid");
+                return "collegesystem/forgotpassword";
             }
 
-            return "collegesystem/forgotpassword";
-
-
-        }catch (Exception e){
+        } catch (Exception e) {
             model.addAttribute("error", "User Id/Security answer is invalid");
             return "collegesystem/forgotpassword";
         }
@@ -78,31 +76,22 @@ public class ForgotPasswordController {
     public String reset(Model model,
                         @RequestParam(value = "password", required = false) String password,
                         @RequestParam(value = "confirmPassword", required = false) String confirmPassword,
-                        @SessionAttribute("validateForm") ValidateForm validateForm)
-    {
+                        @SessionAttribute("validateForm") ValidateForm validateForm) {
 
-        try {
+        if (password != null && password.equals(confirmPassword)) {
+            UserMain userMain1 = userRepository.findByUserId(validateForm.getUserId());
+            userMain1.setPassword(securityConfig.encoder().encode(password));
+            userRepository.save(userMain1);
+            return "redirect:/login?success=2";
 
-            if(password!= null && password.equals(confirmPassword)){
-                UserMain userMain1 = userRepository.findByUserId(validateForm.getUserId());
-                userMain1.setPassword(securityConfig.encoder().encode(password));
-                userRepository.save(userMain1);
-                return "redirect:/login?success=2";
+        } else {
+            model.addAttribute("error", "Password must be the same");
+            return "collegesystem/forgotpassword";
 
-            }else {
-                model.addAttribute("error", "Password must be the same");
-            }
-
-            return "redirect:/forgotpassword?validate=1";
-
-
-        }catch (Exception e){
-            model.addAttribute("error", "User Id/Security answer is invalid");
-            return "redirect:/forgotpassword?validate=1";
         }
 
-    }
 
+    }
 
 }
 
